@@ -91,6 +91,8 @@ void OnDataRecv(const uint8_t *mac, const uint8_t *incomingData, int len)
         int leftPWM = ceil(controlSignal.r * leftPwmCoeff(controlSignal.theta));
         int rightPWM = ceil(controlSignal.r * rightPwmCoeff(controlSignal.theta));
         Serial.print(leftPWM); Serial.print(","); Serial.println(rightPWM);
+        setWheel(0, rightPWM); setWheel(2, rightPWM);
+        setWheel(1, leftPWM); setWheel(3, leftPWM);
     }
 }
 
