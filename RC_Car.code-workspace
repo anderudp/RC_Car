@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"path": "carBody"
+		},
+		{
+			"path": "joyControl"
+		},
+		{
+			"name": "RC_Car",
+			"path": "."
+		}
+	],
+	"settings": {}
+}
