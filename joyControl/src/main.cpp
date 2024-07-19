@@ -81,5 +81,5 @@ void loop()
     Serial.print(theta);
 
     esp_err_t result = esp_now_send(broadcastAddress, (uint8_t *) &controlSignal, sizeof(controlSignal));
-    delay(500);
+    delay(100);
 }
