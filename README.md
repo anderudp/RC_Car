@@ -23,13 +23,13 @@ Connect the joystick to the ESP32.
 
 ![joystick controller wiring diagram](docs/joyControl.svg)
 
-You may want to build a chassis for the remote for ease of use. I recommend getting creative with it. 🙂
+You may want to build a chassis for the remote for ease of use. I suggest getting creative with it. 🙂
 
 ![remote controller tennis ball](docs/remoteComplete.jpg)
 
 
 ## Programming the ESPs
-You will need your car ESP's MAC address for communication. The simplest way to check it is to upload the following program to it and opening a serial monitor on the appropriate teerminal. Make sure to configure the monitor's baud rate to 115200.
+You will need your car ESP's MAC address for communication. The simplest way to check it is to upload the following program to it and opening a serial monitor on the appropriate terminal. Make sure to configure the monitor's baud rate to 115200.
 
 ```c++
 #include <Arduino.h>
@@ -46,14 +46,14 @@ void loop()
 ```
 Once you have the MAC address, head to `joyControl/src/main.cpp` and replace the byte hexes in `broadcastAddress[]` with those of your ESP's MAC address.
 
-Using The PlatformIO extension in VS Code, build and upload `joyControl` to the remote controller's ESP, and `carBody` to the car ESP. On Linux, you must enable IO on the connecting USB terminal:
+Using the PlatformIO extension in VS Code, build and upload `joyControl` to the remote controller's ESP, and `carBody` to the car ESP. On Linux, you must enable the connecting USB terminal:
 ```bash
 sudo chmod a+rw /dev/ttyUSB0
 ```
-Your terminal may be different. Check if the PlatformIO extension can detect the port your ESP board is connected. If none are found, try restarting your computer, and if it still does not show up, try another USB cable.
+Your ESP might be connected on a different terminal. Check if the PlatformIO extension can detect the port your ESP board is connected on. If none are found, try restarting your computer, and if it still does not show up, try a different USB cable.
 
 ## Operation
-The remote controller reads the values of the joystick. This is comprised of the readings of two perpendicularly aligned potentiometers and that of a button (used for braking). The values of the pots are aligned in a square, with additional dead space in the circumircle.
+The remote controller reads the values of the joystick. This is comprised of the readings of two perpendicularly aligned potentiometers and that of a button (here used for braking). The values of the pots form a square, with additional dead space in the circumircle.
 
 The remote controller converts these readings into polar notation, with the distance `r` from the joystick's center being calculated as the maximum of the two coordinates (Chebyshev distance), and the direction `theta` calculated using 2-argument arctangent, resulting in the following radian representation:
 
