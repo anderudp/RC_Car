@@ -29,6 +29,23 @@ You may want to build a chassis for the remote for ease of use. I recommend gett
 
 
 ## Programming the ESPs
+You will need your car ESP's MAC address for communication. The simplest way to check it is to upload the following program to it and opening a serial monitor on the appropriate teerminal. Make sure to configure the monitor's baud rate to 115200.
+
+```c++
+#include <Arduino.h>
+#include <WiFi.h>
+void setup()
+{
+    Serial.begin(115200);
+    WiFi.mode(WIFI_STA);
+}
+void loop()
+{
+    Serial.println(WiFi.macAddress());
+}
+```
+Once you have the MAC address, head to `joyControl/src/main.cpp` and replace the byte hexes in `broadcastAddress[]` with those of your ESP's MAC address.
+
 Using The PlatformIO extension in VS Code, build and upload `joyControl` to the remote controller's ESP, and `carBody` to the car ESP. On Linux, you must enable IO on the connecting USB terminal:
 ```bash
 sudo chmod a+rw /dev/ttyUSB0
