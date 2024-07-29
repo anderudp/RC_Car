@@ -12,7 +12,7 @@ This is a simple RC car library which uses Expressif's ESP-NOW for wireless cont
 
 ## Physical build
 ### Car body
-Fasten the motors to the chassis according to the manufacturer's instructions. Afterwards wire in the components as follows:
+Mount the motors to the chassis according to the manufacturer's instructions. Afterwards wire in the components as follows:
 
 ![car body wiring diagram](docs/carBody.svg)
 
